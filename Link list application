@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node {
+	int data;
+	struct node* link;
+};
+void print_list(struct node *head){
+	while(head!=NULL){
+		printf("%d\n",head->data);
+		head=head->link;
+	}
+}
+	void insert(struct node* head,int n){
+		struct node* new_node=malloc(sizeof(struct node));
+	new_node->data=0;
+	struct node *temp;
+	int i;
+	temp=head;
+	for( i=1;i<n;i++){
+	temp=temp->link;	
+	}
+	struct node* temp2=temp->link;
+	temp->link=new_node;
+	new_node->link=temp2;
+	}
+
+int main()
+{
+	/* insertion at certain point*/
+	struct node* head=(struct node*)malloc(sizeof(struct node));
+	struct node* second=(struct node*)malloc(sizeof(struct node));
+	struct node* third=(struct node*)malloc(sizeof(struct node));
+	head->data=1;
+	second->data=2;
+	third->data=3;
+	head->link=second;
+	second->link=third;
+	third->link=NULL;
+	print_list(head);
+	int c;
+    printf("Enter the value of c(position after which u want to insert)\n");
+    scanf("%d",&c);
+    insert(head,c);
+    printf("The linked list after the insertion at the position %d\n",c);
+    print_list(head);
+}
