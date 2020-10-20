@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node {
+	int data;
+	struct node* link;
+};
+void print_list(struct node *head){
+	while(head!=NULL){
+		printf("%d\n",head->data);
+		head=head->link;
+	}
+}
+	struct node* insert_big(struct node* head){
+		struct node* new_node=malloc(sizeof(struct node));
+	new_node->data=0;
+	    new_node->link=head;
+	    head=new_node;
+	    return head;
+	}
+
+int main()
+{
+	/* insertion at the beginning*/
+	struct node* head=(struct node*)malloc(sizeof(struct node));
+	struct node* second=(struct node*)malloc(sizeof(struct node));
+	struct node* third=(struct node*)malloc(sizeof(struct node));
+	head->data=1;
+	second->data=2;
+	third->data=3;
+	head->link=second;
+	second->link=third;
+	third->link=NULL;
+	print_list(head);
+	
+    head= insert_big(head);
+	print_list(head);
+	head=insert_big(head);
+	print_list(head);
+}
